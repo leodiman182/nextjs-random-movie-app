@@ -6,13 +6,21 @@ module.exports = {
     './src/app/**/*.{js,ts,jsx,tsx,mdx}',
   ],
   theme: {
+    fontFamily: {
+      serif: ['Merriweather', 'serif'],
+      cursive: ['Limelight', 'cursive'],
+    },
     extend: {
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
         'gradient-conic':
           'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
       },
+      colos: {
+        primary: '#E33E54',
+        secondary: '#F5C97A',
+      },
     },
   },
   plugins: [],
-}
+};

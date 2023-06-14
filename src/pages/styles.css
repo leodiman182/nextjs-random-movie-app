@@ -1,0 +1,19 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.title {
+  font-family: 'Limelight', cursive;
+}
+
+.text {
+  font-family: 'Merriweather', serif;
+}
+
+.my-text-shadow {
+  text-shadow: #e33e54 -2px -1px, #f5c97a -3px -1px;
+}
+
+.my-text-shadow-lg {
+  text-shadow: #e33e54 -2px -1px, #f5c97a -4px -1px;
+}
