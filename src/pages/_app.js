@@ -1,9 +1,11 @@
 import MainLayout from '../components/layout/main-layout';
 import Head from 'next/head';
+import MainProvider from '@/context/MainProvider';
 import './styles.css';
+
 export default function App({ Component, pageProps }) {
   return (
-    <>
+    <MainProvider>
       <Head>
         <title>Random Movie app</title>
         <meta
@@ -40,6 +42,6 @@ export default function App({ Component, pageProps }) {
       <MainLayout>
         <Component {...pageProps} />
       </MainLayout>
-    </>
+    </MainProvider>
   );
 }
