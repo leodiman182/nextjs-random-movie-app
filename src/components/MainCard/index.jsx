@@ -1,6 +1,9 @@
 import { useContext, useState } from 'react';
 import Loading from '../Loading';
 import MainContext from '@/context/MainContext';
+// import axios from '../../utils/axios';
+// import { URL } from '../../utils/api';
+import Link from 'next/link';
 
 export default function MainCard() {
   const { loading, setLoading } = useContext(MainContext);
@@ -30,9 +33,11 @@ export default function MainCard() {
         Use the app to get a random movie
       </h3>
       {!loading ? (
-        <button className="text bg-primary rounded-md py-[10px] px-[20px] lg:px-[40px] text-white lg:text-[28px] my-[28px] opacity-80 hover:opacity-100 hover:bg-white hover:text-primary hover:scale-110 duration-150">
-          Surprise me!
-        </button>
+        <Link href="/movie">
+          <button className="text bg-primary rounded-md py-[10px] px-[20px] lg:px-[40px] text-white lg:text-[28px] my-[28px] opacity-80 hover:opacity-100 hover:bg-white hover:text-primary hover:scale-110 duration-150">
+            Surprise me!
+          </button>
+        </Link>
       ) : (
         <Loading />
       )}
