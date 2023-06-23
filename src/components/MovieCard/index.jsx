@@ -14,10 +14,10 @@ export default function MovieCard() {
     <article className="bg-black pb-[30px] lg:p-[75px] lg:pt-0 rounded-md text-center lg:w-[550px] max-h-[600px] overflow-auto hide-scroll">
       <header className="w-full px-[40px] lg:px-0 py-[20px]">
         <Link href="/">
-          <AiOutlineLeft
-            className="hover:scale-110 duration-150 hover:fill-black hover:bg-secondary rounded-full lg:p-[6px]"
-            size={'2em'}
-          />
+          <button className="flex flex-row items-center hover:bg-secondary rounded-full py-[10px] px-[10px] pr-[20px] hover:scale-110 duration-150 hover:first:fill-black hover:text-black">
+            <AiOutlineLeft className="mr-[6px]" size={'2em'} />
+            BACK
+          </button>
         </Link>
       </header>
       <div className="mt-[50px] lg:mt-[20px] relative">
@@ -31,8 +31,10 @@ export default function MovieCard() {
         />
         <article className="mt-[550px] px-[30px] lg:px-0">
           <div className="bg-gray-50 duration-150 hover:bg-secondary rounded-md border-dotted border-[8px] border-primary text-black py-[20px] px-[20px] lg:px-[10px] my-[40px]">
-            <h3 className="title text-[28px] text-center">{title}</h3>
-            <p className="text text-[14px]">{tagline}</p>
+            <h3 className="title text-[28px] text-center border-b-2">
+              {title}
+            </h3>
+            <p className="text text-[14px] mt-[5px]">{tagline}</p>
           </div>
           <p className="text mt-[40px] text-[18px]">
             {overview} | {year}
