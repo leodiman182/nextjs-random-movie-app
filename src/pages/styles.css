@@ -3,11 +3,11 @@
 @tailwind utilities;
 
 .title {
-  font-family: 'Limelight', cursive;
+  font-family: 'Caprasimo', cursive;
 }
 
 .text {
-  font-family: 'Merriweather', serif;
+  font-family: 'Quicksand', sans-serif;
 }
 
 .my-text-shadow {
@@ -64,4 +64,12 @@
 .hide-scroll {
   -ms-overflow-style: none; /* IE and Edge */
   scrollbar-width: none; /* Firefox */
+}
+
+.st0 {
+  fill: #e33e54;
+}
+
+.st1 {
+  fill: #f5c97a;
 }

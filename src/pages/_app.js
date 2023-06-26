@@ -15,7 +15,11 @@ export default function App({ Component, pageProps }) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin />
+        <link
+          rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossOrigin="true"
+        />
         <link
           rel="apple-touch-icon"
           sizes="180x180"
@@ -34,10 +38,6 @@ export default function App({ Component, pageProps }) {
           href="public/favicon-16x16.png"
         />
         <link rel="manifest" href="public/site.webmanifest" />
-        {/* <link
-          href="https://fonts.googleapis.com/css2?family=Limelight&family=Merriweather:wght@300;400;700&display=swap"
-          rel="stylesheet"
-        /> */}
       </Head>
       <MainLayout>
         <Component {...pageProps} />

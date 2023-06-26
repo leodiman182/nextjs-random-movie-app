@@ -5,11 +5,11 @@ export default function Document() {
     <Html lang="en">
       <Head>
         <link
-          href="https://fonts.googleapis.com/css2?family=Limelight&family=Merriweather:wght@300;400;700&display=swap"
+          href="https://fonts.googleapis.com/css2?family=Caprasimo&family=Quicksand:wght@300;400;500;700&display=swap"
           rel="stylesheet"
         />
       </Head>
-      <body>
+      <body className="text">
         <Main />
         <NextScript />
       </body>

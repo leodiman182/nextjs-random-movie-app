@@ -7,6 +7,7 @@ export default function Footer() {
       <p className="text-[20px] lg:text-[36px] my-text-shadow -mt-[2px] lg:-mt-[10px]">
         Leonardo Diman
       </p>
+      <span className="-mt-[8px]">{date}</span>
     </footer>
   );
 }
