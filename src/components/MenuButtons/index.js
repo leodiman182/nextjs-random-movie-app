@@ -1,6 +1,6 @@
 import {
   fetchMovieByRate,
-  fetchgetMovieByGender,
+  fetchMovieByGender,
   fetchMovieByRateAndGender,
 } from '../../utils/requests';
 
@@ -11,7 +11,7 @@ export const buttons = [
   },
   {
     name: 'By gender',
-    func: () => fetchgetMovieByGender(),
+    func: () => fetchMovieByGender(),
   },
   {
     name: 'By rate and gender',

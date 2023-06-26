@@ -1,7 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
-    domains: ['images.unsplash.com', 'image.tmdb.org'],
+    domains: ['image.tmdb.org', 'images.unsplash.com'],
   },
   async headers() {
     return [
@@ -27,7 +27,3 @@ const nextConfig = {
 };
 
 module.exports = nextConfig;
-
-module.exports = {
-  //avoiding CORS error, more here: https://vercel.com/support/articles/how-to-enable-cors
-};
