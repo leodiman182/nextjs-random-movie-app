@@ -1,11 +1,10 @@
 import Link from 'next/link';
-import { AiOutlineLeft } from 'react-icons/ai';
-
+import { AiFillCaretLeft } from 'react-icons/ai';
 export default function BackButton() {
   return (
     <Link href="/">
-      <button className="flex flex-row items-center hover:bg-secondary rounded-full py-[2px] px-[10px] pr-[20px] hover:scale-110 duration-150 hover:first:fill-black hover:text-black">
-        <AiOutlineLeft className="mr-[6px]" size={'2em'} />
+      <button className="flex flex-row items-center hover:bg-secondary rounded-md py-[4px] px-[15px] pl-[10px] hover:scale-110 duration-150 hover:first:fill-black hover:text-black">
+        <AiFillCaretLeft className="mr-[2px]" size={'1em'} />
         BACK
       </button>
     </Link>

@@ -12,6 +12,18 @@ export async function fetchRandomMovie() {
   return data;
 }
 
+export async function fetchGenreOptions() {
+  const res = await fetch(`${URL}/opcoes_genero`);
+
+  if (!res.ok) {
+    throw new Error('Failed to fetch data');
+  }
+
+  const data = res.json();
+
+  return data;
+}
+
 export async function fetchMovieByRate() {
   console.log('by rate');
 
