@@ -8,7 +8,7 @@ export default function RatingComponent() {
   return (
     <Rating
       size="large"
-      className="border-2 border-slate-100 bg-slate-100 rounded-md my-[10px] mx-auto lg:scale-[125%]"
+      className="border-2 border-slate-100 bg-slate-100 rounded-md my-[25px] lg:my-[10px] mx-auto scale-[150%] lg:scale-[125%]"
       name="half-rating"
       value={searchRate}
       onChange={(event, newValue) => {

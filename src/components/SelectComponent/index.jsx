@@ -1,10 +1,8 @@
-import MainContext from '@/context/MainContext';
-import { FormControl, InputLabel, MenuItem, Select } from '@mui/material';
 import { useContext } from 'react';
+import MainContext from '@/context/MainContext';
 
 export default function SelectComponent() {
   const {
-    searchGender,
     setSearchGender,
     // genderOptions
   } = useContext(MainContext);
@@ -27,7 +25,7 @@ export default function SelectComponent() {
     <div>
       <select
         onChange={handleChange}
-        className="my-[10px] block rounded-md py-[10px] pl-3 pr-10 bg-transparent text-white border-[1px] border-primary text-[20px] mx-auto w-[195px]"
+        className="my-[10px] block rounded-md py-[10px] pl-3 pr-10 bg-transparent text-white border-[1px] border-primary text-[20px] mx-auto w-[227px] lg:w-[195px]"
         defaultValue=""
       >
         <option value="" disabled>

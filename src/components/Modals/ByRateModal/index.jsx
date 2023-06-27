@@ -1,12 +1,17 @@
-import { Fragment, useContext, useState } from 'react';
+/* eslint-disable react-hooks/exhaustive-deps */
+import { Fragment, useContext, useEffect } from 'react';
 import { Dialog, Transition } from '@headlessui/react';
 import MainContext from '@/context/MainContext';
 import { AiFillCloseCircle } from 'react-icons/ai';
 import RatingComponent from '@/components/RatingComponent';
 
 export default function ByRateModal() {
-  const { rateModalOpen, setRateModalOpen, searchRate } =
+  const { rateModalOpen, setRateModalOpen, searchRate, setSearchRate } =
     useContext(MainContext);
+
+  useEffect(() => {
+    !rateModalOpen && setSearchRate(0);
+  }, [rateModalOpen]);
 
   return (
     <Transition.Root show={rateModalOpen} as={Fragment}>

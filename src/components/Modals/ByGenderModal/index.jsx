@@ -1,4 +1,5 @@
-import { Fragment, useContext, useState } from 'react';
+/* eslint-disable react-hooks/exhaustive-deps */
+import { Fragment, useContext, useEffect, useState } from 'react';
 import { Dialog, Transition } from '@headlessui/react';
 import MainContext from '@/context/MainContext';
 import { AiFillCloseCircle } from 'react-icons/ai';
@@ -7,8 +8,16 @@ import SelectComponent from '@/components/SelectComponent';
 import Loading from '@/components/Loading';
 
 export default function ByGenderModal() {
-  const { genderModalOpen, setGenderModalOpen, genderOptions } =
-    useContext(MainContext);
+  const {
+    genderModalOpen,
+    setGenderModalOpen,
+    genderOptions,
+    setGenderOptions,
+  } = useContext(MainContext);
+
+  useEffect(() => {
+    !genderModalOpen && setGenderOptions([]);
+  }, [genderModalOpen]);
 
   return (
     <Transition.Root show={genderModalOpen} as={Fragment}>
@@ -53,7 +62,7 @@ export default function ByGenderModal() {
                   <div className="mt-[50px] text-center w-full">
                     <Dialog.Title
                       as="h3"
-                      className="title text-[30px] font-semibold leading-6 text-primary"
+                      className="title text-[30px] font-semibold leading-6 text-white"
                     >
                       Search by Gender
                     </Dialog.Title>

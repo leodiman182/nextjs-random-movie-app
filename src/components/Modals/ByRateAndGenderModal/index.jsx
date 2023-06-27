@@ -7,12 +7,8 @@ import Loading from '@/components/Loading';
 import RatingComponent from '@/components/RatingComponent';
 
 export default function ByRateAndGenderModal() {
-  const {
-    rateAndGenderModalOpen,
-    setRateAndGenderModalOpen,
-    genderOptions,
-    searchRate,
-  } = useContext(MainContext);
+  const { rateAndGenderModalOpen, setRateAndGenderModalOpen, genderOptions } =
+    useContext(MainContext);
 
   return (
     <Transition.Root show={rateAndGenderModalOpen} as={Fragment}>
