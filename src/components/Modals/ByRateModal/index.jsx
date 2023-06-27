@@ -4,6 +4,7 @@ import { Dialog, Transition } from '@headlessui/react';
 import MainContext from '@/context/MainContext';
 import { AiFillCloseCircle } from 'react-icons/ai';
 import RatingComponent from '@/components/RatingComponent';
+import { fetchMovieByRate } from '@/utils/requests';
 
 export default function ByRateModal() {
   const { rateModalOpen, setRateModalOpen, searchRate, setSearchRate } =
@@ -87,7 +88,10 @@ export default function ByRateModal() {
                 </div>
                 <div className="flex justify-end">
                   <button
-                    onClick={() => setRateModalOpen(false)}
+                    onClick={() => {
+                      fetchMovieByRate(searchRate);
+                      setRateModalOpen(false);
+                    }}
                     className="bg-green-800 rounded-md py-[10px] px-[20px] text-white text-[20px] mt-[24px] opacity-80 hover:opacity-100 hover:bg-green-600 font-bold duration-100"
                   >
                     Surprise me!

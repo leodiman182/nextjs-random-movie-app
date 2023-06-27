@@ -24,23 +24,20 @@ export async function fetchGenreOptions() {
   return data;
 }
 
-export async function fetchMovieByRate() {
-  console.log('fetch by rate');
-
+export async function fetchMovieByRate(searchRate) {
+  console.log('fetch by rate :', searchRate * 2);
   // fetch
   // gerar_aleatorio
 }
 
-export async function fetchMovieByGender() {
-  console.log('fetch by gender');
-
+export async function fetchMovieByGender(searchGender) {
+  console.log('fetch by gender :', searchGender);
   // fetch
   // opcoes_genero
 }
 
-export async function fetchMovieByRateAndGender() {
-  console.log('fetch by rate and gender');
-
+export async function fetchMovieByRateAndGender(searchRate, searchGender) {
+  console.log('fetch by rate and gender :', searchRate * 2, searchGender);
   // fetch
   // gerar_aleatorio_rate_genero
 }

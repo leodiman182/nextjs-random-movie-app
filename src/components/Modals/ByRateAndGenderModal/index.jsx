@@ -5,10 +5,16 @@ import { AiFillCloseCircle } from 'react-icons/ai';
 import SelectComponent from '@/components/SelectComponent';
 import Loading from '@/components/Loading';
 import RatingComponent from '@/components/RatingComponent';
+import { fetchMovieByRateAndGender } from '@/utils/requests';
 
 export default function ByRateAndGenderModal() {
-  const { rateAndGenderModalOpen, setRateAndGenderModalOpen, genderOptions } =
-    useContext(MainContext);
+  const {
+    rateAndGenderModalOpen,
+    setRateAndGenderModalOpen,
+    genderOptions,
+    searchRate,
+    searchGender,
+  } = useContext(MainContext);
 
   return (
     <Transition.Root show={rateAndGenderModalOpen} as={Fragment}>
@@ -69,7 +75,10 @@ export default function ByRateAndGenderModal() {
                 </div>
                 <div className="flex justify-end">
                   <button
-                    onClick={() => setRateAndGenderModalOpen(false)}
+                    onClick={() => {
+                      fetchMovieByRateAndGender(searchRate, searchGender);
+                      setRateAndGenderModalOpen(false);
+                    }}
                     className="bg-green-800 rounded-md py-[10px] px-[20px] text-white text-[20px] opacity-80 hover:opacity-100 hover:bg-green-600 font-bold duration-150"
                   >
                     Surprise me!
