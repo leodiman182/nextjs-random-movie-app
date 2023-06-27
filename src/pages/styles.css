@@ -73,3 +73,8 @@
 .st1 {
   fill: #f5c97a;
 }
+
+option:checked {
+  background-color: #f5c97a;
+  color: black;
+}

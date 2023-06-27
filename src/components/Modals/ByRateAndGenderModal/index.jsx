@@ -1,4 +1,5 @@
-import { Fragment, useContext, useState } from 'react';
+/* eslint-disable react-hooks/exhaustive-deps */
+import { Fragment, useContext, useEffect, useState } from 'react';
 import { Dialog, Transition } from '@headlessui/react';
 import MainContext from '@/context/MainContext';
 import { AiFillCloseCircle } from 'react-icons/ai';
@@ -6,15 +7,39 @@ import SelectComponent from '@/components/SelectComponent';
 import Loading from '@/components/Loading';
 import RatingComponent from '@/components/RatingComponent';
 import { fetchMovieByRateAndGender } from '@/utils/requests';
+import { useRouter } from 'next/navigation';
 
 export default function ByRateAndGenderModal() {
+  const router = useRouter();
+
   const {
     rateAndGenderModalOpen,
     setRateAndGenderModalOpen,
     genderOptions,
+    setLoading,
     searchRate,
+    setRandomMovie,
+    setSearchRate,
     searchGender,
+    setSearchGender,
   } = useContext(MainContext);
+
+  useEffect(() => {
+    if (!rateAndGenderModalOpen) {
+      setSearchGender([]);
+      setSearchRate(0);
+    }
+  }, [rateAndGenderModalOpen]);
+
+  async function getRandomMovieByRateAndGender() {
+    setLoading(true);
+    router.push('/movie');
+
+    fetchMovieByRateAndGender(searchRate, searchGender).then((res) => {
+      setRandomMovie(res);
+      setLoading(false);
+    });
+  }
 
   return (
     <Transition.Root show={rateAndGenderModalOpen} as={Fragment}>
@@ -75,10 +100,7 @@ export default function ByRateAndGenderModal() {
                 </div>
                 <div className="flex justify-end">
                   <button
-                    onClick={() => {
-                      fetchMovieByRateAndGender(searchRate, searchGender);
-                      setRateAndGenderModalOpen(false);
-                    }}
+                    onClick={getRandomMovieByRateAndGender}
                     className="bg-green-800 rounded-md py-[10px] px-[20px] text-white text-[20px] opacity-80 hover:opacity-100 hover:bg-green-600 font-bold duration-150"
                   >
                     Surprise me!

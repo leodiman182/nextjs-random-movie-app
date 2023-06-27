@@ -6,19 +6,34 @@ import { AiFillCloseCircle } from 'react-icons/ai';
 import SelectComponent from '@/components/SelectComponent';
 import Loading from '@/components/Loading';
 import { fetchMovieByGender } from '@/utils/requests';
+import { useRouter } from 'next/navigation';
 
 export default function ByGenderModal() {
+  const router = useRouter();
+
   const {
     genderModalOpen,
     setGenderModalOpen,
     genderOptions,
-    setGenderOptions,
+    setSearchGender,
     searchGender,
+    setLoading,
+    setRandomMovie,
   } = useContext(MainContext);
 
   useEffect(() => {
-    !genderModalOpen && setGenderOptions([]);
+    !genderModalOpen && setSearchGender([]);
   }, [genderModalOpen]);
+
+  async function getRandomMovieByGender() {
+    setLoading(true);
+    router.push('/movie');
+
+    fetchMovieByGender(searchGender).then((res) => {
+      setRandomMovie(res);
+      setLoading(false);
+    });
+  }
 
   return (
     <Transition.Root show={genderModalOpen} as={Fragment}>
@@ -74,10 +89,7 @@ export default function ByGenderModal() {
                 </div>
                 <div className="flex justify-end">
                   <button
-                    onClick={() => {
-                      fetchMovieByGender(searchGender);
-                      setGenderModalOpen(false);
-                    }}
+                    onClick={getRandomMovieByGender}
                     className="bg-green-800 rounded-md py-[10px] px-[20px] text-white text-[20px] opacity-80 hover:opacity-100 hover:bg-green-600 font-bold duration-150"
                   >
                     Surprise me!

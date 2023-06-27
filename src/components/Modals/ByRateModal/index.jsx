@@ -5,14 +5,33 @@ import MainContext from '@/context/MainContext';
 import { AiFillCloseCircle } from 'react-icons/ai';
 import RatingComponent from '@/components/RatingComponent';
 import { fetchMovieByRate } from '@/utils/requests';
+import { useRouter } from 'next/navigation';
 
 export default function ByRateModal() {
-  const { rateModalOpen, setRateModalOpen, searchRate, setSearchRate } =
-    useContext(MainContext);
+  const router = useRouter();
+
+  const {
+    rateModalOpen,
+    setRateModalOpen,
+    searchRate,
+    setSearchRate,
+    setLoading,
+    setRandomMovie,
+  } = useContext(MainContext);
 
   useEffect(() => {
     !rateModalOpen && setSearchRate(0);
   }, [rateModalOpen]);
+
+  async function getRandomMovieByRate() {
+    setLoading(true);
+    router.push('/movie');
+
+    fetchMovieByRate(searchRate).then((res) => {
+      setRandomMovie(res);
+      setLoading(false);
+    });
+  }
 
   return (
     <Transition.Root show={rateModalOpen} as={Fragment}>
@@ -88,10 +107,7 @@ export default function ByRateModal() {
                 </div>
                 <div className="flex justify-end">
                   <button
-                    onClick={() => {
-                      fetchMovieByRate(searchRate);
-                      setRateModalOpen(false);
-                    }}
+                    onClick={getRandomMovieByRate}
                     className="bg-green-800 rounded-md py-[10px] px-[20px] text-white text-[20px] mt-[24px] opacity-80 hover:opacity-100 hover:bg-green-600 font-bold duration-100"
                   >
                     Surprise me!

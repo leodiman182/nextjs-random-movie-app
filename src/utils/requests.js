@@ -1,4 +1,4 @@
-import { URL } from './api';
+import { URL, rateAndGenderURL } from './api';
 
 export async function fetchRandomMovie() {
   const res = await fetch(`${URL}/gerar_aleatorio`);
@@ -25,19 +25,70 @@ export async function fetchGenreOptions() {
 }
 
 export async function fetchMovieByRate(searchRate) {
-  console.log('fetch by rate :', searchRate * 2);
-  // fetch
-  // gerar_aleatorio
+  const reqBody = {
+    rate: searchRate * 2,
+    genero: null,
+  };
+
+  const res = await fetch(`${URL}/${rateAndGenderURL}`, {
+    body: JSON.stringify(reqBody),
+    headers: {
+      'Content-Type': 'application/json; charset=utf8',
+    },
+    method: 'POST',
+  });
+
+  if (!res.ok) {
+    throw new Error('Failed to fetch data');
+  }
+
+  const data = res.json();
+
+  return data;
 }
 
 export async function fetchMovieByGender(searchGender) {
-  console.log('fetch by gender :', searchGender);
-  // fetch
-  // opcoes_genero
+  const reqBody = {
+    rate: null,
+    genero: searchGender,
+  };
+
+  const res = await fetch(`${URL}/${rateAndGenderURL}`, {
+    body: JSON.stringify(reqBody),
+    headers: {
+      'Content-Type': 'application/json; charset=utf8',
+    },
+    method: 'POST',
+  });
+
+  if (!res.ok) {
+    throw new Error('Failed to fetch data');
+  }
+
+  const data = res.json();
+
+  return data;
 }
 
 export async function fetchMovieByRateAndGender(searchRate, searchGender) {
-  console.log('fetch by rate and gender :', searchRate * 2, searchGender);
-  // fetch
-  // gerar_aleatorio_rate_genero
+  const reqBody = {
+    rate: searchRate * 2,
+    genero: searchGender,
+  };
+
+  const res = await fetch(`${URL}/${rateAndGenderURL}`, {
+    body: JSON.stringify(reqBody),
+    headers: {
+      'Content-Type': 'application/json; charset=utf8',
+    },
+    method: 'POST',
+  });
+
+  if (!res.ok) {
+    throw new Error('Failed to fetch data');
+  }
+
+  const data = res.json();
+
+  return data;
 }

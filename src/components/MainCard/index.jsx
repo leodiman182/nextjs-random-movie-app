@@ -4,7 +4,7 @@ import Loading from '../Loading';
 import MainContext from '@/context/MainContext';
 import { useRouter } from 'next/navigation';
 import Illustration from '../Illustration';
-import { fetchRandomMovie } from '@/utils/requests';
+import { fetchRandomMovie, fetchGenreOptions } from '@/utils/requests';
 import ByRateModal from '../Modals/ByRateModal';
 import ByGenderModal from '../Modals/ByGenderModal';
 import ByRateAndGenderModal from '../Modals/ByRateAndGenderModal';
@@ -18,6 +18,7 @@ export default function MainCard() {
     rateModalOpen,
     setRateModalOpen,
     genderModalOpen,
+    setGenderOptions,
     setGenderModalOpen,
     rateAndGenderModalOpen,
     setRateAndGenderModalOpen,
@@ -38,12 +39,6 @@ export default function MainCard() {
     },
   ];
 
-  // useEffect(() => {
-  //   const data = fetchGenreOptions();
-
-  //   setGenderOptions(data);
-  // }, []);
-
   async function getRandomMovie() {
     setLoading(true);
     router.push('/movie');
@@ -53,6 +48,14 @@ export default function MainCard() {
       setLoading(false);
     });
   }
+
+  useEffect(() => {
+    async function getGenderOptions() {
+      fetchGenreOptions().then((res) => setGenderOptions(res));
+    }
+
+    getGenderOptions();
+  }, []);
 
   return (
     <>
