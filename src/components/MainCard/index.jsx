@@ -63,13 +63,13 @@ export default function MainCard() {
       <ByGenderModal />
       <ByRateAndGenderModal />
       <article className="bg-black py-[30px] px-[20px] lg:px-[20px] lg:py-[50px] lg:pt-[15px] rounded-md text-center lg:w-[475px]">
-        <div className="my-[15px] text-[24px] lg:text-[26px] w-full flex flex-col items-center">
+        <div className="mt-[15px] text-[24px] lg:text-[26px] w-full flex flex-col items-center">
           <Illustration />
         </div>
         {!loading ? (
           <button
             onClick={() => getRandomMovie()}
-            className="bg-primary rounded-md py-[10px] px-[10px] lg:px-[40px] text-white lg:text-[28px] my-[24px] opacity-80 hover:opacity-100 hover:bg-white hover:text-primary font-bold duration-150"
+            className="bg-primary rounded-md py-[10px] px-[10px] lg:px-[40px] text-white lg:text-[28px] my-[30px] opacity-80 hover:opacity-100 hover:bg-white hover:text-primary font-bold duration-150"
           >
             Surprise me!
           </button>

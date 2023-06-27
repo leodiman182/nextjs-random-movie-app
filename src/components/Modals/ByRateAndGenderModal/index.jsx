@@ -24,12 +24,12 @@ export default function ByRateAndGenderModal() {
     setSearchGender,
   } = useContext(MainContext);
 
-  useEffect(() => {
-    if (!rateAndGenderModalOpen) {
-      setSearchGender([]);
-      setSearchRate(0);
-    }
-  }, [rateAndGenderModalOpen]);
+  // useEffect(() => {
+  //   if (!rateAndGenderModalOpen) {
+  //     setSearchGender([]);
+  //     setSearchRate(0);
+  //   }
+  // }, [rateAndGenderModalOpen]);
 
   async function getRandomMovieByRateAndGender() {
     setLoading(true);

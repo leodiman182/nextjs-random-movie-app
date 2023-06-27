@@ -5,10 +5,12 @@ import BackButton from '../BackButton';
 import { useContext } from 'react';
 import MainContext from '@/context/MainContext';
 import Loading from '../Loading';
-import { Rating } from '@mui/material';
+import { Rating, Tooltip, Zoom } from '@mui/material';
+import { HiRefresh } from 'react-icons/hi';
 
 export default function MovieCard() {
-  const { randomMovie, loading } = useContext(MainContext);
+  const { randomMovie, loading, searchRate, searchGender } =
+    useContext(MainContext);
 
   const {
     tagline,
@@ -18,9 +20,13 @@ export default function MovieCard() {
     release_date,
     genres,
     vote_average,
-  } = randomMovie;
+  } = mockRandomMovie;
 
   const year = !loading && release_date.split('-', 1);
+
+  async function refreshSearch() {
+    console.log(searchRate, searchGender);
+  }
 
   return loading ? (
     <Loading />
@@ -53,7 +59,17 @@ export default function MovieCard() {
         </footer>
       </article>
 
-      <article className="hidden lg:flex flex-col bg-black p-[20px] rounded-md text-center w-[1024px] max-h-[700px]">
+      <article className="hidden lg:flex flex-col bg-black p-[20px] rounded-md text-center w-[1024px] max-h-[700px] relative">
+        <div className="absolute bottom-[20px] right-[20px]">
+          <Tooltip title="Do it again!" arrow TransitionComponent={Zoom}>
+            <button
+              onClick={() => refreshSearch()}
+              className=" rounded-full p-[8px] text-white opacity-100  hover:bg-secondary hover:text-black font-bold duration-150 text-[24px]"
+            >
+              <HiRefresh />
+            </button>
+          </Tooltip>
+        </div>
         <header className="w-full pb-[10px]">
           <BackButton />
         </header>
@@ -76,14 +92,14 @@ export default function MovieCard() {
               </div>
               <p className="my-[10px]">{tagline}</p>
             </section>
-            <section className="flex flex-row">
+            <section className="flex flex-row items-center">
               <div className="mr-[40px]">
                 Release date:
                 <p className="title text-secondary text-[28px] -mt-[10px]">
                   {year}
                 </p>
               </div>
-              <div>
+              <div className="mr-[40px]">
                 Rating:
                 <div className="flex flex-row items-center font-bold justify-center">
                   <Rating
