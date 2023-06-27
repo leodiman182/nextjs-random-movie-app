@@ -3,16 +3,24 @@ import { Dialog, Transition } from '@headlessui/react';
 import MainContext from '@/context/MainContext';
 import { AiFillCloseCircle } from 'react-icons/ai';
 import SelectComponent from '@/components/SelectComponent';
-
 import Loading from '@/components/Loading';
+import RatingComponent from '@/components/RatingComponent';
 
-export default function ByGenderModal() {
-  const { genderModalOpen, setGenderModalOpen, genderOptions } =
-    useContext(MainContext);
+export default function ByRateAndGenderModal() {
+  const {
+    rateAndGenderModalOpen,
+    setRateAndGenderModalOpen,
+    genderOptions,
+    searchRate,
+  } = useContext(MainContext);
 
   return (
-    <Transition.Root show={genderModalOpen} as={Fragment}>
-      <Dialog as="div" className="relative z-10" onClose={setGenderModalOpen}>
+    <Transition.Root show={rateAndGenderModalOpen} as={Fragment}>
+      <Dialog
+        as="div"
+        className="relative z-10"
+        onClose={setRateAndGenderModalOpen}
+      >
         <Transition.Child
           as={Fragment}
           enter="ease-out duration-300"
@@ -41,7 +49,7 @@ export default function ByGenderModal() {
                   <button
                     type="button"
                     className="rounded-md bg-white text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-none"
-                    onClick={() => setGenderModalOpen(false)}
+                    onClick={() => setRateAndGenderModalOpen(false)}
                   >
                     <AiFillCloseCircle
                       className="h-[30px] w-[30px] bg-black fill-red-300 hover:fill-red-600 duration-150"
@@ -55,16 +63,17 @@ export default function ByGenderModal() {
                       as="h3"
                       className="title text-[30px] font-semibold leading-6 text-primary"
                     >
-                      Search by Gender
+                      Search by Rate and Gender
                     </Dialog.Title>
-                    <div className="my-[40px] flex flex-col items-center">
+                    <div className="my-[20px] flex flex-col justify-center w-full">
+                      <RatingComponent />
                       {genderOptions !== [] ? <SelectComponent /> : <Loading />}
                     </div>
                   </div>
                 </div>
                 <div className="flex justify-end">
                   <button
-                    onClick={() => setGenderModalOpen(false)}
+                    onClick={() => setRateAndGenderModalOpen(false)}
                     className="bg-green-800 rounded-md py-[10px] px-[20px] text-white text-[20px] opacity-80 hover:opacity-100 hover:bg-green-600 font-bold duration-150"
                   >
                     Surprise me!

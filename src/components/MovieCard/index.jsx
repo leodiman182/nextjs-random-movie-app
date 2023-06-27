@@ -7,7 +7,7 @@ import MainContext from '@/context/MainContext';
 import Loading from '../Loading';
 
 export default function MovieCard() {
-  const { randomMovie, loading, setLoading } = useContext(MainContext);
+  const { randomMovie, loading } = useContext(MainContext);
 
   const { tagline, poster_path, title, overview, release_date } = randomMovie;
 

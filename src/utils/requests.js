@@ -25,21 +25,21 @@ export async function fetchGenreOptions() {
 }
 
 export async function fetchMovieByRate() {
-  console.log('by rate');
+  console.log('fetch by rate');
 
   // fetch
   // gerar_aleatorio
 }
 
 export async function fetchMovieByGender() {
-  console.log('by gender');
+  console.log('fetch by gender');
 
   // fetch
   // opcoes_genero
 }
 
 export async function fetchMovieByRateAndGender() {
-  console.log('by rate and gender');
+  console.log('fetch by rate and gender');
 
   // fetch
   // gerar_aleatorio_rate_genero

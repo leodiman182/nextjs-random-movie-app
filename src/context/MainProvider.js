@@ -6,7 +6,7 @@ export default function MainProvider({ children }) {
   const [randomMovie, setRandomMovie] = useState({});
 
   const [rateModalOpen, setRateModalOpen] = useState(false);
-  const [genderModalOpen, setGenderModalOpen] = useState(true);
+  const [genderModalOpen, setGenderModalOpen] = useState(false);
   const [rateAndGenderModalOpen, setRateAndGenderModalOpen] = useState(false);
 
   const [searchRate, setSearchRate] = useState(0);

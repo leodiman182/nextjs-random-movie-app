@@ -51,11 +51,11 @@ export default function ByRateModal() {
                   <div className="mt-[50px] text-center w-full">
                     <Dialog.Title
                       as="h3"
-                      className="title text-[30px] font-semibold leading-6 text-secondary"
+                      className="title text-[30px] font-semibold leading-6 text-primary"
                     >
                       Search by Rate
                     </Dialog.Title>
-                    <div className="my-[20px] flex flex-col items-center">
+                    <div className="mt-[30px] flex flex-col items-center">
                       <RatingComponent />
                       {searchRate !== 0 ? (
                         <div className="h-[72px] flex flex-col justify-end">
