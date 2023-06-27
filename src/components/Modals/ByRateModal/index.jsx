@@ -13,10 +13,10 @@ export default function ByRateModal() {
       <Dialog as="div" className="relative z-10" onClose={setRateModalOpen}>
         <Transition.Child
           as={Fragment}
-          enter="ease-out duration-300"
+          enter="ease-out duration-100"
           enterFrom="opacity-0"
           enterTo="opacity-100"
-          leave="ease-in duration-200"
+          leave="ease-in duration-100"
           leaveFrom="opacity-100"
           leaveTo="opacity-0"
         >
@@ -27,10 +27,10 @@ export default function ByRateModal() {
           <div className="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
             <Transition.Child
               as={Fragment}
-              enter="ease-out duration-300"
+              enter="ease-out duration-100"
               enterFrom="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
               enterTo="opacity-100 translate-y-0 sm:scale-100"
-              leave="ease-in duration-200"
+              leave="ease-in duration-100"
               leaveFrom="opacity-100 translate-y-0 sm:scale-100"
               leaveTo="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
             >
@@ -42,7 +42,7 @@ export default function ByRateModal() {
                     onClick={() => setRateModalOpen(false)}
                   >
                     <AiFillCloseCircle
-                      className="h-[30px] w-[30px] bg-black fill-red-300 hover:fill-red-600 duration-150"
+                      className="h-[30px] w-[30px] bg-black fill-red-300 hover:fill-red-600 duration-100"
                       aria-hidden="true"
                     />
                   </button>
@@ -83,7 +83,7 @@ export default function ByRateModal() {
                 <div className="flex justify-end">
                   <button
                     onClick={() => setRateModalOpen(false)}
-                    className="bg-green-800 rounded-md py-[10px] px-[20px] text-white text-[20px] mt-[24px] opacity-80 hover:opacity-100 hover:bg-green-600 font-bold duration-150"
+                    className="bg-green-800 rounded-md py-[10px] px-[20px] text-white text-[20px] mt-[24px] opacity-80 hover:opacity-100 hover:bg-green-600 font-bold duration-100"
                   >
                     Surprise me!
                   </button>
