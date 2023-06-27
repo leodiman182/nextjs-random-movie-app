@@ -5,11 +5,20 @@ import BackButton from '../BackButton';
 import { useContext } from 'react';
 import MainContext from '@/context/MainContext';
 import Loading from '../Loading';
+import { Rating } from '@mui/material';
 
 export default function MovieCard() {
   const { randomMovie, loading } = useContext(MainContext);
 
-  const { tagline, poster_path, title, overview, release_date } = randomMovie;
+  const {
+    tagline,
+    poster_path,
+    title,
+    overview,
+    release_date,
+    genres,
+    vote_average,
+  } = randomMovie;
 
   const year = !loading && release_date.split('-', 1);
 
@@ -59,18 +68,49 @@ export default function MovieCard() {
             />
           </aside>
           <article className="w-2/3 flex flex-col items-center px-[40px]">
-            <div className="bg-gray-50 rounded-md border-dotted border-[8px] border-primary text-black py-[10px] px-[20px] lg:px-[10px]">
-              <h3 className="title text-[20px] lg:text-[30px] text-center border-b-2">
-                {title}
-              </h3>
-            </div>
-            <p className="my-[10px]">{tagline}</p>
-            <div className="text-left w-full mt-[40px]">
-              <p className="title text-secondary text-[28px]">{year} </p>
-            </div>
-            <p className="text-left text-[18px] overflow-auto h-[210px] mt-[20px]">
-              {overview} <br />
-            </p>
+            <section>
+              <div className="bg-gray-50 rounded-md border-dotted border-[8px] border-primary text-black py-[10px] px-[20px] lg:px-[10px]">
+                <h3 className="title text-[20px] lg:text-[30px] text-center border-b-2">
+                  {title}
+                </h3>
+              </div>
+              <p className="my-[10px]">{tagline}</p>
+            </section>
+            <section className="flex flex-row">
+              <div className="mr-[40px]">
+                Release date:
+                <p className="title text-secondary text-[28px] -mt-[10px]">
+                  {year}
+                </p>
+              </div>
+              <div>
+                Rating:
+                <div className="flex flex-row items-center font-bold justify-center">
+                  <Rating
+                    precision={0.5}
+                    name="simple-controlled"
+                    value={vote_average / 2}
+                    readOnly
+                  />
+                  {vote_average}
+                </div>
+              </div>
+            </section>
+            <section className="flex flex-row justify-center mt-[20px]">
+              {genres.map((el) => (
+                <p
+                  key={el.id}
+                  className="text-primary text-[16px] rounded border-[1px] border-primary py-[2px] px-[6px] hover:bg-primary hover:cursor-default font-bold duration-150 hover:text-black mx-[5px]"
+                >
+                  {el.name}
+                </p>
+              ))}
+            </section>
+            <section className="">
+              <p className="text-left text-[18px] overflow-auto h-[230px] mt-[20px] hide-scroll">
+                {overview} <br />
+              </p>
+            </section>
           </article>
         </main>
       </article>
