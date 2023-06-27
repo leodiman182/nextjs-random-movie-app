@@ -4,7 +4,8 @@ export async function fetchRandomMovie() {
   const res = await fetch(`${URL}/gerar_aleatorio`);
 
   if (!res.ok) {
-    throw new Error('Failed to fetch data');
+    console.log(res);
+    history.forward('/error');
   }
 
   const data = res.json();
@@ -16,7 +17,8 @@ export async function fetchGenreOptions() {
   const res = await fetch(`${URL}/opcoes_genero`);
 
   if (!res.ok) {
-    throw new Error('Failed to fetch data');
+    console.log(res);
+    history.forward('/error');
   }
 
   const data = res.json();
@@ -39,7 +41,8 @@ export async function fetchMovieByRate(searchRate) {
   });
 
   if (!res.ok) {
-    throw new Error('Failed to fetch data');
+    console.log(res);
+    history.forward('/error');
   }
 
   const data = res.json();
@@ -62,7 +65,8 @@ export async function fetchMovieByGender(searchGender) {
   });
 
   if (!res.ok) {
-    throw new Error('Failed to fetch data');
+    console.log(res);
+    history.forward('/error');
   }
 
   const data = res.json();
@@ -85,7 +89,8 @@ export async function fetchMovieByRateAndGender(searchRate, searchGender) {
   });
 
   if (!res.ok) {
-    throw new Error('Failed to fetch data');
+    console.log(res);
+    history.forward('/error');
   }
 
   const data = res.json();

@@ -21,9 +21,9 @@ export default function ByGenderModal() {
     setRandomMovie,
   } = useContext(MainContext);
 
-  // useEffect(() => {
-  //   !genderModalOpen && setSearchGender([]);
-  // }, [genderModalOpen]);
+  useEffect(() => {
+    !genderModalOpen && setSearchGender([]);
+  }, [genderModalOpen]);
 
   async function getRandomMovieByGender() {
     setLoading(true);

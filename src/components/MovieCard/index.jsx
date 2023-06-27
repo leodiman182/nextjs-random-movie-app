@@ -7,6 +7,7 @@ import MainContext from '@/context/MainContext';
 import Loading from '../Loading';
 import { Rating, Tooltip, Zoom } from '@mui/material';
 import { HiRefresh } from 'react-icons/hi';
+import Illustration2 from '../Illustrations/Illustration2';
 
 export default function MovieCard() {
   const { randomMovie, loading, searchRate, searchGender } =
@@ -20,12 +21,22 @@ export default function MovieCard() {
     release_date,
     genres,
     vote_average,
-  } = mockRandomMovie;
+  } = randomMovie;
 
   const year = !loading && release_date.split('-', 1);
 
   async function refreshSearch() {
-    console.log(searchRate, searchGender);
+    if (searchGender.length === 0 && searchRate > 0) {
+      console.log('rebuscar por rating');
+    } else if (!searchRate && searchGender.length > 0) {
+      console.log('rebuscar por gender');
+    } else if (searchRate > 0 && searchGender.length > 0) {
+      console.log('rebuscar pelos 2');
+    } else {
+      console.log('random');
+    }
+
+    console.log(searchRate * 2, searchGender);
   }
 
   return loading ? (
@@ -63,8 +74,9 @@ export default function MovieCard() {
         <div className="absolute bottom-[20px] right-[20px]">
           <Tooltip title="Do it again!" arrow TransitionComponent={Zoom}>
             <button
+              id="refresh-button"
               onClick={() => refreshSearch()}
-              className=" rounded-full p-[8px] text-white opacity-100  hover:bg-secondary hover:text-black font-bold duration-150 text-[24px]"
+              className="rounded-full p-[8px] text-white opacity-100  hover:bg-secondary hover:text-black font-bold duration-150 text-[24px]"
             >
               <HiRefresh />
             </button>
@@ -75,13 +87,22 @@ export default function MovieCard() {
         </header>
         <main className="w-full flex flex-row h-full">
           <aside className="w-1/3">
-            <Image
-              height={3000}
-              width={3000}
-              className="rounded-md w-full max-h-[575px] object-cover mx-auto"
-              src={`${imageURL}/${poster_path}`}
-              alt={title}
-            />
+            {poster_path !== '' ? (
+              <Image
+                height={3000}
+                width={3000}
+                className="rounded-md w-full max-h-[575px] object-cover mx-auto"
+                src={`${imageURL}/${poster_path}`}
+                alt={title}
+              />
+            ) : (
+              <div className="h-full flex flex-col items-center justify-center">
+                <p className="mb-[50px] text-[20px]">
+                  Sorry, image not found :(
+                </p>
+                <Illustration2 />
+              </div>
+            )}
           </aside>
           <article className="w-2/3 flex flex-col items-center px-[40px]">
             <section>
@@ -103,12 +124,15 @@ export default function MovieCard() {
                 Rating:
                 <div className="flex flex-row items-center font-bold justify-center">
                   <Rating
+                    sx={{
+                      marginRight: '4px',
+                    }}
                     precision={0.5}
                     name="simple-controlled"
                     value={vote_average / 2}
                     readOnly
                   />
-                  {vote_average}
+                  {vote_average.toFixed(2)}
                 </div>
               </div>
             </section>

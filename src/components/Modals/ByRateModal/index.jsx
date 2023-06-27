@@ -19,9 +19,9 @@ export default function ByRateModal() {
     setRandomMovie,
   } = useContext(MainContext);
 
-  // useEffect(() => {
-  //   !rateModalOpen && setSearchRate(0);
-  // }, [rateModalOpen]);
+  useEffect(() => {
+    !rateModalOpen && setSearchRate(0);
+  }, [rateModalOpen]);
 
   async function getRandomMovieByRate() {
     setLoading(true);

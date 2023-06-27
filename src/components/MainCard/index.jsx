@@ -3,7 +3,7 @@ import { useContext, useEffect } from 'react';
 import Loading from '../Loading';
 import MainContext from '@/context/MainContext';
 import { useRouter } from 'next/navigation';
-import Illustration from '../Illustration';
+import Illustration from '../Illustrations/Illustration';
 import { fetchRandomMovie, fetchGenreOptions } from '@/utils/requests';
 import ByRateModal from '../Modals/ByRateModal';
 import ByGenderModal from '../Modals/ByGenderModal';
@@ -80,7 +80,7 @@ export default function MainCard() {
         <div className="flex flex-col w-full">
           {buttons.map((el, index) => (
             <button
-              className="lg:w-3/4 bg-black border-2 border-white my-[8px] lg:my-[6px] py-[4px] rounded-md text-white font-bold lg:text-[20px] lg:mx-auto lg:opacity-70 hover:opacity-100 hover:border-secondary hover:bg-secondary hover:text-black duration-150"
+              className="lg:w-3/4 bg-black border-2 border-white my-[8px] lg:my-[6px] py-[4px] rounded-md text-secondary font-bold lg:text-[20px] lg:mx-auto lg:opacity-70 hover:opacity-100 hover:border-secondary hover:bg-secondary hover:text-black duration-150"
               key={index}
               onClick={el.func}
             >
